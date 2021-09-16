@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import CantidadDeProductos from '../components/CantidadDeProductos';
 
 const PaginaProductos = () => {
 
@@ -38,6 +39,9 @@ const renderProductos = () => {
   return (
     <>
       <h2>Listando productos</h2>
+
+      <CantidadDeProductos />
+
       {cargando && <b>Cargando...</b>}
       {!cargando && <table>
           <thead>
