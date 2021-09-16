@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Boton from './Boton';
+import Boton from '../components/Boton';
 
-const Contenido = () => {
+const PaginaSumador = () => {
 
     const [sum, setSum] = useState(44);
 
@@ -26,4 +26,4 @@ const Contenido = () => {
     )
 }
 
-export default Contenido
+export default PaginaSumador

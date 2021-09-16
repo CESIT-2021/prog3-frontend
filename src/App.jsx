@@ -1,14 +1,14 @@
 import React from 'react';
-import Contenido from './components/Contenido';
-import PaginaProductos from './components/PaginaProductos';
 import Titulo from './components/Titulo'
 import {
     Switch,
     Route,
     Link
   } from "react-router-dom";
-import PaginaInicio from './components/PaginaInicio';
-import PaginaDetalleProducto from './components/PaginaDetalleProducto';
+import PaginaSumador from './pages/PaginaSumador';
+import PaginaProductos from './pages/PaginaProductos';
+import PaginaInicio from './pages/PaginaInicio';
+import PaginaDetalleProducto from './pages/PaginaDetalleProducto';
 
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
         <div className="container">
             <Switch>
                 <Route exact path="/" component={PaginaInicio} />
-                <Route path="/sumador" component={Contenido} />
+                <Route path="/sumador" component={PaginaSumador} />
                 <Route exact path="/productos" component={PaginaProductos} />
                 <Route path="/productos/:idProducto" component={PaginaDetalleProducto} />
             </Switch>

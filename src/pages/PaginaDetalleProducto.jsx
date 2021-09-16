@@ -1,5 +1,5 @@
 import React from 'react'
-import Boton from './Boton';
+import Boton from '../components/Boton';
 
 const PaginaDetalleProducto = (params) => {
     console.info("-----", params)
@@ -17,7 +17,7 @@ const PaginaDetalleProducto = (params) => {
                 titulo="Ir a Productos"
                 manejador={manejadorIrProd}
             />
-            <a href="/productos">Soy más vivo</a>
+            <a href="/productos">Link Volver</a>
         </div>
     )
 }
