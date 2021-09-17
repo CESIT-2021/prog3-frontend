@@ -10,13 +10,13 @@ import PaginaProductos from './pages/PaginaProductos';
 import PaginaInicio from './pages/PaginaInicio';
 import PaginaDetalleProducto from './pages/PaginaDetalleProducto';
 import PaginaSumadorRedux from './pages/PaginaSumadorRedux';
-
+import PaginaProductosRedux from './pages/PaginaProductosRedux';
 
 const App = () => {
 
     return (
     <>
-        <Titulo nombre="Clase de repaso" />
+        <Titulo nombre="Programación 3" />
         <ul>
             <li>
                 <Link to="/">Inicio</Link>
@@ -30,6 +30,9 @@ const App = () => {
             <li>
                 <Link to="/productos">Productos</Link>
             </li>
+            <li>
+                <Link to="/productos-redux">Productos Redux</Link>
+            </li>
         </ul>
 
         <div className="container">
@@ -38,10 +41,10 @@ const App = () => {
                 <Route path="/sumador" component={PaginaSumador} />
                 <Route path="/sumador-redux" component={PaginaSumadorRedux} />
                 <Route exact path="/productos" component={PaginaProductos} />
+                <Route exact path="/productos-redux" component={PaginaProductosRedux} />
                 <Route path="/productos/:idProducto" component={PaginaDetalleProducto} />
             </Switch>
         </div>
-
     </>
     )
 };
