@@ -2,7 +2,7 @@ import React, {useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import CantidadDeProductos from '../components/CantidadDeProductos';
 import { useSelector, useDispatch } from 'react-redux';
-import { GetProductos } from '../store/actions/productosActions';
+import { GetProductos } from '../actions/productosActions';
 
 const PaginaProductosRedux = () => {
 
