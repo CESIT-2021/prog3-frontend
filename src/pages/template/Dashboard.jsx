@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import MyRouter from '../MyRouter';
+import MyRouter from '../../MyRouter';
 import TopMenu from './TopMenu';
 import LeftMenue from './LeftMenue';
 

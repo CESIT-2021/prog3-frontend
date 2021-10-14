@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
 
-import PaginaSumador from './PaginaSumador';
-import PaginaProductos from './PaginaProductos';
-import PaginaInicio from './PaginaInicio';
-import PaginaDetalleProducto from './PaginaDetalleProducto';
-import PaginaSumadorRedux from './PaginaSumadorRedux';
-import PaginaProductosRedux from './PaginaProductosRedux';
+import PaginaSumador from './pages/PaginaSumador';
+import PaginaProductos from './pages/PaginaProductos';
+import PaginaInicio from './pages/PaginaInicio';
+import PaginaDetalleProducto from './pages/PaginaDetalleProducto';
+import PaginaSumadorRedux from './pages/PaginaSumadorRedux';
+import PaginaProductosRedux from './pages/PaginaProductosRedux';
 
 const MyRouter = () => {
   return (
