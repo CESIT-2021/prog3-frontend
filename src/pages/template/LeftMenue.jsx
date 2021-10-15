@@ -45,6 +45,15 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
+const MenuItem = ({ title, path, icon }) => (
+  <ListItem button component={Link} to={path}>
+      <ListItemIcon>
+        {React.createElement(icon)}
+      </ListItemIcon>
+      <ListItemText primary={title} />
+    </ListItem>
+)
+
 const LeftMenue = ({ open, drawerWidth, mdTheme, toggleDrawer }) => {
   return (
     <Drawer variant='permanent' open={open} drawerWidth={drawerWidth}>
@@ -63,36 +72,12 @@ const LeftMenue = ({ open, drawerWidth, mdTheme, toggleDrawer }) => {
       <Divider />
       <List>
         <div>
-          <ListItem button component={Link} to={'/'}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary='Inicio' />
-          </ListItem>
-          <ListItem button component={Link} to={'/sumador'}>
-            <ListItemIcon>
-              <ShoppingCartIcon />
-            </ListItemIcon>
-            <ListItemText primary='Sumador' />
-          </ListItem>
-          <ListItem button component={Link} to={'/sumador-redux'}>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary='Sumador Redux' />
-          </ListItem>
-          <ListItem button component={Link} to={'/productos'}>
-            <ListItemIcon>
-              <BarChartIcon />
-            </ListItemIcon>
-            <ListItemText primary='Productos' />
-          </ListItem>
-          <ListItem button component={Link} to={'/productos-redux'}>
-            <ListItemIcon>
-              <LayersIcon />
-            </ListItemIcon>
-            <ListItemText primary='Productos Redux' />
-          </ListItem>
+          
+          <MenuItem title='Inicio' path='/' icon={DashboardIcon} />
+          <MenuItem title='Sumador' path='/sumador' icon={ShoppingCartIcon} />
+          <MenuItem title='Sumador Redux' path='/sumador-redux' icon={PeopleIcon} />
+          <MenuItem title='Productos' path='/productos' icon={BarChartIcon} />
+          <MenuItem title='Productos Redux' path='/productos-redux' icon={LayersIcon} />
         </div>
       </List>
     </Drawer>
