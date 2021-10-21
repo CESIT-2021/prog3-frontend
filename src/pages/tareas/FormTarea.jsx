@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { CrearTarea } from '../../actions/tareasActions';
 
 const FormTarea = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
   const dispatch = useDispatch();
   const { nombre, descripcion, estaFinalizada } = useSelector(
     (state) => state.tarea.tareaSeleccionada
@@ -22,7 +22,8 @@ const FormTarea = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='nombre'>Nombre: </label>
         <br />
-        <input type='text' defaultValue={nombre} {...register('nombre')} />
+        <input type='text' defaultValue={nombre} {...register('nombre', { required: true })} />
+        {errors.nombre && <span>Este campo es requerido</span>}
         <br />
 
         <label htmlFor='descripcion'>Descripcion: </label>
