@@ -78,6 +78,7 @@ const LeftMenue = ({ open, drawerWidth, mdTheme, toggleDrawer }) => {
           <MenuItem title='Sumador Redux' path='/sumador-redux' icon={PeopleIcon} />
           <MenuItem title='Productos' path='/productos' icon={BarChartIcon} />
           <MenuItem title='Productos Redux' path='/productos-redux' icon={LayersIcon} />
+          <MenuItem title='Tareas' path='/tareas' icon={LayersIcon} />
         </div>
       </List>
     </Drawer>
