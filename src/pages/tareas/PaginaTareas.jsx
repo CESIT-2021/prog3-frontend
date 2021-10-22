@@ -40,7 +40,9 @@ const PaginaTareas = () => {
             <td>{tarea.nombre}</td>
             <td>{tarea.descripcion}</td>
             <td>{tarea.estaFinailzada ? 'si' : 'no'}</td>
-            <td>ver - editar - eliminar</td>
+            <td>ver - 
+              <a href={`/tareas/${tarea._id}/editar`}>Editar</a>
+               - eliminar</td>
           </tr>))}
           
         </tbody>

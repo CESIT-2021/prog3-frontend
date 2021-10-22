@@ -8,7 +8,7 @@ import PaginaDetalleProducto from './pages/PaginaDetalleProducto';
 import PaginaSumadorRedux from './pages/PaginaSumadorRedux';
 import PaginaProductosRedux from './pages/PaginaProductosRedux';
 import PaginaTareas from './pages/tareas/PaginaTareas';
-import PaginaNuevaTarea from './pages/tareas/PaginaNuevaTarea';
+import FormTarea from './pages/tareas/FormTarea';
 
 const MyRouter = () => {
   return (
@@ -20,7 +20,8 @@ const MyRouter = () => {
       <Route exact path='/productos-redux' component={PaginaProductosRedux} />
       <Route path='/productos/:idProducto' component={PaginaDetalleProducto} />
       <Route exact path='/tareas' component={PaginaTareas} />
-      <Route exact path='/tareas/nueva' component={PaginaNuevaTarea} />
+      <Route exact path='/tareas/nueva' component={FormTarea} />
+      <Route exact path='/tareas/:id/editar' component={FormTarea} />
 
     </Switch>
   );

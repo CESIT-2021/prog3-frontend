@@ -1,28 +1,58 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { CrearTarea } from '../../actions/tareasActions';
+import {
+  CrearTarea,
+  GetTareaById,
+  ActualizarTarea,
+} from '../../actions/tareasActions';
+import { useHistory, useParams } from 'react-router';
 
 const FormTarea = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const dispatch = useDispatch();
   const { nombre, descripcion, estaFinalizada } = useSelector(
     (state) => state.tarea.tareaSeleccionada
   );
+  let { id } = useParams();
+  let history = useHistory();
+
+  useEffect(() => {
+    if (id) {
+      dispatch(GetTareaById(id));
+    }
+  }, []);
 
   const onSubmit = (datos) => {
-    console.info('---> ', datos);
-    dispatch(CrearTarea(datos))
+    try {
+      if (id) {
+        dispatch(ActualizarTarea({ id, datos }));
+      } else {
+        dispatch(CrearTarea(datos));
+      }
+
+      history.push('/tareas');
+    } catch (error) {
+      // manejo de error
+    }
   };
 
   return (
     <div>
-      <h2>Nueva Tareas</h2>
+      <h2>{id ? 'Editando' : 'Nueva'} Tareas</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='nombre'>Nombre: </label>
         <br />
-        <input type='text' defaultValue={nombre} {...register('nombre', { required: true })} />
+        <input
+          type='text'
+          defaultValue={nombre}
+          {...register('nombre', { required: true })}
+        />
         {errors.nombre && <span>Este campo es requerido</span>}
         <br />
 
@@ -45,9 +75,10 @@ const FormTarea = () => {
         <br />
 
         <button type='submit'>Guardar</button>
-        <a href="/tareas">Cancelar</a>
+        <a href='/tareas'>Cancelar</a>
       </form>
-    </div>);
-}
+    </div>
+  );
+};
 
-export default FormTarea
+export default FormTarea;

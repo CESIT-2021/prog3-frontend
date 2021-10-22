@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GetTareas, CrearTarea } from '../../actions/tareasActions';
+import { GetTareas, GetTareaById, CrearTarea, ActualizarTarea } from '../../actions/tareasActions';
 
 export const initialState = {
   cargando: false,
@@ -39,6 +39,30 @@ export const tareaSlice = createSlice({
     [GetTareas.rejected]: (state, action) => {
       state.cargando = false;
       state.error = 'Error al obtener tareas';
+    },
+    [GetTareaById.pending]: (state, action) => {
+      state.cargando = true;
+    },
+    [GetTareaById.fulfilled]: (state, action) => {
+      state.cargando = false;
+      state.tareaSeleccionada = action.payload.data
+      state.error = null;
+    },
+    [GetTareaById.rejected]: (state, action) => {
+      state.cargando = false;
+      state.error = 'Error al obtener la tarea';
+    },
+    [ActualizarTarea.pending]: (state, action) => {
+      state.cargando = true;
+    },
+    [ActualizarTarea.fulfilled]: (state, action) => {
+      state.cargando = false;
+      state.tareaSeleccionada = action.payload.data
+      state.error = null;
+    },
+    [ActualizarTarea.rejected]: (state, action) => {
+      state.cargando = false;
+      state.error = 'Error al actualizar la tarea';
     },
   },
 });
