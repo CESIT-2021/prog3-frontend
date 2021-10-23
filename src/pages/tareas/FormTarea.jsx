@@ -25,7 +25,7 @@ const FormTarea = () => {
     if (id) {
       dispatch(GetTareaById(id));
     }
-  }, []);
+  }, [dispatch, id]);
 
   const onSubmit = (datos) => {
     try {

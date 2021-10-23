@@ -9,4 +9,8 @@ export default configureStore({
       producto: productoSlice,
       tarea: tareaSlice
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

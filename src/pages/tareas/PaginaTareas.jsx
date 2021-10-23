@@ -10,12 +10,8 @@ const PaginaTareas = () => {
   );
 
   useEffect(() => {
-
     dispatch(GetTareas());
-
-  }, []);
-
-  console.info("-----", listaTareas);
+  }, [dispatch]);
 
   return (
     <div>
