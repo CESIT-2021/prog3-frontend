@@ -22,3 +22,25 @@ export const ActualizarTarea = createAsyncThunk(
   'tarea/putTareaById',
   async ({id, datos}) => await axios.put(`${BASE_URL}/api/tareas/${id}`, datos)
 );
+
+export const EliminarTarea = createAsyncThunk(
+  'tarea/deleteTareaById',
+  async (id) => {
+    const response =  await axios.delete(`${BASE_URL}/api/tareas/${id}`);
+    return {
+      id,
+      response
+    }
+  }
+);
+
+export const CambiarEstadoTarea = createAsyncThunk(
+  'tarea/toggleTareaById',
+  async (id) => {
+    const response =  await axios.put(`${BASE_URL}/api/tareas/${id}/cambiar-finalizada`);
+    return {
+      id,
+      tareaActualizada: response.data
+    }
+  }
+);

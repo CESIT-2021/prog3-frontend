@@ -9,6 +9,7 @@ import PaginaSumadorRedux from './pages/PaginaSumadorRedux';
 import PaginaProductosRedux from './pages/PaginaProductosRedux';
 import PaginaTareas from './pages/tareas/PaginaTareas';
 import FormTarea from './pages/tareas/FormTarea';
+import VerTarea from './pages/tareas/VerTarea';
 
 const MyRouter = () => {
   return (
@@ -22,7 +23,7 @@ const MyRouter = () => {
       <Route exact path='/tareas' component={PaginaTareas} />
       <Route exact path='/tareas/nueva' component={FormTarea} />
       <Route exact path='/tareas/:id/editar' component={FormTarea} />
-
+      <Route exact path='/tareas/:id/ver' component={VerTarea} />
     </Switch>
   );
 };

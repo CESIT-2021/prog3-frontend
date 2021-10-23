@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { GetTareas, GetTareaById, CrearTarea, ActualizarTarea } from '../../actions/tareasActions';
+import {
+  GetTareas,
+  GetTareaById,
+  CrearTarea,
+  ActualizarTarea,
+  EliminarTarea,
+  CambiarEstadoTarea,
+} from '../../actions/tareasActions';
 
 export const initialState = {
   cargando: false,
@@ -8,8 +15,8 @@ export const initialState = {
   tareaSeleccionada: {
     nombre: '',
     descripcion: '',
-    estaFinalizada: false
-  }
+    estaFinalizada: false,
+  },
 };
 
 export const tareaSlice = createSlice({
@@ -33,7 +40,7 @@ export const tareaSlice = createSlice({
     },
     [GetTareas.fulfilled]: (state, action) => {
       state.cargando = false;
-      state.listaTareas = action.payload.data
+      state.listaTareas = action.payload.data;
       state.error = null;
     },
     [GetTareas.rejected]: (state, action) => {
@@ -45,7 +52,7 @@ export const tareaSlice = createSlice({
     },
     [GetTareaById.fulfilled]: (state, action) => {
       state.cargando = false;
-      state.tareaSeleccionada = action.payload.data
+      state.tareaSeleccionada = action.payload.data;
       state.error = null;
     },
     [GetTareaById.rejected]: (state, action) => {
@@ -57,12 +64,40 @@ export const tareaSlice = createSlice({
     },
     [ActualizarTarea.fulfilled]: (state, action) => {
       state.cargando = false;
-      state.tareaSeleccionada = action.payload.data
+      state.tareaSeleccionada = null;
       state.error = null;
     },
     [ActualizarTarea.rejected]: (state, action) => {
       state.cargando = false;
       state.error = 'Error al actualizar la tarea';
+    },
+    [EliminarTarea.pending]: (state, action) => {
+      state.cargando = true;
+    },
+    [EliminarTarea.fulfilled]: (state, action) => {
+      state.cargando = false;
+      state.tareaSeleccionada = null;
+      state.listaTareas = state.listaTareas.filter(t => t._id !== action.payload.id);
+      state.error = null;
+    },
+    [EliminarTarea.rejected]: (state, action) => {
+      state.cargando = false;
+      state.error = 'Error al eliminar la tarea';
+    },
+    [CambiarEstadoTarea.pending]: (state, action) => {
+      state.cargando = true;
+    },
+    [CambiarEstadoTarea.fulfilled]: (state, action) => {
+      state.cargando = false;
+      state.tareaSeleccionada = null;
+      const { id, tareaActualizada } = action.payload;
+      state.listaTareas = state.listaTareas.map(tarea => (tarea._id === id) ? tareaActualizada : tarea)
+      
+      state.error = null;
+    },
+    [CambiarEstadoTarea.rejected]: (state, action) => {
+      state.cargando = false;
+      state.error = 'Error al cambiar estado de la tarea';
     },
   },
 });

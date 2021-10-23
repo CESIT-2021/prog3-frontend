@@ -12,13 +12,15 @@ const FormTarea = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
-  const { nombre, descripcion, estaFinalizada } = useSelector(
-    (state) => state.tarea.tareaSeleccionada
-  );
   let { id } = useParams();
+  const { nombre, descripcion, estaFinalizada } = useSelector((state) => {
+    const tarea = state.tarea.listaTareas.filter((t) => t._id === id)[0];
+    return tarea || {};
+  });
   let history = useHistory();
 
   useEffect(() => {
@@ -26,6 +28,14 @@ const FormTarea = () => {
       dispatch(GetTareaById(id));
     }
   }, [dispatch, id]);
+
+  useEffect(() => {
+    reset({
+      nombre,
+      descripcion,
+      estaFinalizada,
+    });
+  }, [reset, nombre, descripcion, estaFinalizada]);
 
   const onSubmit = (datos) => {
     try {
@@ -48,30 +58,18 @@ const FormTarea = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor='nombre'>Nombre: </label>
         <br />
-        <input
-          type='text'
-          defaultValue={nombre}
-          {...register('nombre', { required: true })}
-        />
+        <input type='text' {...register('nombre', { required: true })} />
         {errors.nombre && <span>Este campo es requerido</span>}
         <br />
 
         <label htmlFor='descripcion'>Descripcion: </label>
         <br />
-        <input
-          type='text'
-          defaultValue={descripcion}
-          {...register('descripcion')}
-        />
+        <input type='text' {...register('descripcion')} />
         <br />
 
         <label htmlFor='estaFinalizada'>Finalizada?: </label>
         <br />
-        <input
-          type='checkbox'
-          defaultChecked={estaFinalizada}
-          {...register('estaFinalizada')}
-        />
+        <input type='checkbox' {...register('estaFinalizada')} />
         <br />
 
         <button type='submit'>Guardar</button>
