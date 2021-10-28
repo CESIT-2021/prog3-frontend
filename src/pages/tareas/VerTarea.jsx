@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import Title from '../../components/common/Title';
 
 const VerTarea = () => {
 
@@ -13,7 +14,7 @@ const VerTarea = () => {
 
     return (
         <div>
-            <h1>Ver Tarea</h1>
+            <Title>Ver Tarea</Title>
 
             Nombre:
             <p>{nombre}</p>
