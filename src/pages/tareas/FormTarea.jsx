@@ -16,7 +16,6 @@ const FormTarea = () => {
     handleSubmit,
     reset,
     control,
-    register,
     formState: { errors },
   } = useForm();
   const dispatch = useDispatch();
